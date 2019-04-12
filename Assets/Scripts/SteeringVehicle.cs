@@ -79,7 +79,7 @@ public class SteeringVehicle : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        if (Vector2.Distance(_currentTarget, _currentPosition) > _arrivalDistance)
+        if (Vector2.Distance(_currentTarget, _currentPosition) < _arrivalDistance)
         {
             if (Arrived != null)
             {
