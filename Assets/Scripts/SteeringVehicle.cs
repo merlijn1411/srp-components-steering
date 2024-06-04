@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class SteeringVehicle : MonoBehaviour
@@ -10,7 +9,7 @@ public class SteeringVehicle : MonoBehaviour
     [SerializeField] private float mass = 20;
 
     /** boolean of het object de richting op kijkt waar we naar toe bewegen */
-    [SerializeField] private bool followPath = false;
+    [SerializeField] private bool followPath;
 
     [SerializeField] private float arrivalDistance = 0.1f;
 
@@ -19,9 +18,9 @@ public class SteeringVehicle : MonoBehaviour
 
     public UnityEvent onArrived;
 
-    [SerializeField] private Transform targetTransform;
+    public Transform targetTransform;
 
-    void Start()
+    public void Start()
     {
         _currentVelocity = new Vector2(0, 0);
         _currentPosition = transform.position;
@@ -30,7 +29,7 @@ public class SteeringVehicle : MonoBehaviour
     }
 
     // Elke frametick kijken we hoe we moeten sturen
-    void Update()
+    public void Update()
     {
         SetTarget(targetTransform.position);
         Seek();
@@ -43,7 +42,7 @@ public class SteeringVehicle : MonoBehaviour
 
     public Vector2 Target { get; private set; }
 
-    void Seek()
+    public void Seek()
     {
         // we berekenen eerst de afstand/Vector tot de 'target'		
         var desiredStep = Target - _currentPosition;
